@@ -1,27 +1,21 @@
-archetype (adl_version=1.4; uid=af0c9a40-9ee3-4068-a492-00e994d1812f)
+﻿archetype (adl_version=1.4; uid=af0c9a40-9ee3-4068-a492-00e994d1812f)
 	openEHR-EHR-OBSERVATION.visual_field_measurement.v0
 
 concept
-	[at0000]
-
+	[at0000]	-- Visual field measurement
 language
 	original_language = <[ISO_639-1::en]>
-
 description
 	original_author = <
-		["date"] = <"2012-09-19">
 		["name"] = <"Ian McNicoll">
 		["organisation"] = <"Ocean Informatics UK">
 		["email"] = <"ian.mcnicoll@oceaninformatics.com">
+		["date"] = <"2012-09-19">
 	>
-	lifecycle_state = <"in_development">
-	other_contributors = <"José Andonegui, Hospital de Navarra, jose.andonegui.navarro@cfnavarra.es","Gustavo Bacelar-Silva, Healthcare Designs, Brazil (openEHR Editor)","Aitor Eguzkitza, Universidad Pública de Navarra - Complejo Hospitalario de Navarra, aitor.eguzkiza@unavarra.es","Ian McNicoll, freshEHR Clinical Informatics, United Kingdom (openEHR Editor)","Luis Serrano, Universidad Pública de Navarra (UPNA), lserrano@unavarra.es","John Tore Valand, Helse Bergen, Norway (openEHR Editor)">
 	details = <
 		["en"] = <
 			language = <[ISO_639-1::en]>
 			purpose = <"To record the results of visual field testing or perimetry.">
-			keywords = <"perimetry","ophthalmic","optometry","eye","vision","visual">
-			copyright = <"© openEHR Foundation">
 			use = <"Use to record the results of visual field testing or perimetry. 
 
 Use to incorporate the narrative descriptions of clinical findings within existing or legacy clinical systems into an archetyped format, using the 'Clinical Description' data element. 
@@ -29,8 +23,13 @@ Use to incorporate the narrative descriptions of clinical findings within existi
 Detailed, structured visual acuity results are preferred and are generally recorded for each eye in turn.
 
 If the method of measurement or device is changed for the testing of the second eye, record the second eye's data in another instance of data which captures the new method or device.">
+			keywords = <"perimetry", "ophthalmic", "optometry", "eye", "vision", "visual">
+			misuse = <"">
+			copyright = <"© openEHR Foundation">
 		>
 	>
+	lifecycle_state = <"in_development">
+	other_contributors = <"José Andonegui, Hospital de Navarra, jose.andonegui.navarro@cfnavarra.es", "Gustavo Bacelar-Silva, Healthcare Designs, Brazil (openEHR Editor)", "Aitor Eguzkitza, Universidad Pública de Navarra - Complejo Hospitalario de Navarra, aitor.eguzkiza@unavarra.es", "Ian McNicoll, freshEHR Clinical Informatics, United Kingdom (openEHR Editor)", "Luis Serrano, Universidad Pública de Navarra (UPNA), lserrano@unavarra.es", "John Tore Valand, Helse Bergen, Norway (openEHR Editor)">
 	other_details = <
 		["licence"] = <"This work is licensed under the Creative Commons Attribution-ShareAlike 3.0 License. To view a copy of this license, visit http://creativecommons.org/licenses/by-sa/3.0/.">
 		["custodian_organisation"] = <"openEHR Foundation">
@@ -60,74 +59,75 @@ Chiefer U, Pascual JP, Edmunds B, Feudner E, Hoffmann EM, Johnson CA, Lagreze WA
 		["original_namespace"] = <"org.openehr">
 		["original_publisher"] = <"openEHR Foundation">
 		["custodian_namespace"] = <"org.openehr">
-		["MD5-CAM-1.0.1"] = <"4F42F4B685A2B9CD1C4A3FC05D64BB63">
-		["build_uid"] = <"60dc0470-6574-47bd-836f-963776e4dcd6">
+		["MD5-CAM-1.0.1"] = <"16076E05EF3D8FBD7CBBFDA3CCD5F31E">
+		["build_uid"] = <"508fdcf5-a7d3-42d2-ba5e-d830f11258cf">
 		["ip_acknowledgements"] = <"This artefact includes content from SNOMED Clinical Terms® (SNOMED CT®) which is copyrighted material of the International Health Terminology Standards Development Organisation (IHTSDO). Where an implementation of this artefact makes use of SNOMED CT content, the implementer must have the appropriate SNOMED CT Affiliate license - for more information contact http://www.snomed.org/snomed-ct/get-snomedct or info@snomed.org.">
 		["revision"] = <"0.0.1-alpha">
 	>
 
 definition
-	OBSERVATION[at0000] matches {    -- Visual field measurement
+	OBSERVATION[at0000] matches {	-- Visual field measurement
 		data matches {
-			HISTORY[at0001] matches {    -- Event Series
+			HISTORY[at0001] matches {	-- Event Series
 				events cardinality matches {1..*; unordered} matches {
-					EVENT[at0002] occurrences matches {0..*} matches {    -- Any event
+					EVENT[at0002] occurrences matches {0..*} matches {	-- Any event
 						data matches {
-							ITEM_TREE[at0003] matches {    -- Tree
+							ITEM_TREE[at0003] matches {	-- Tree
 								items cardinality matches {0..*; unordered} matches {
-									ELEMENT[at0052] occurrences matches {0..1} matches {    -- Test result name
+									ELEMENT[at0052] occurrences matches {0..1} matches {	-- Test result name
 										value matches {
 											DV_CODED_TEXT matches {
 												defining_code matches {
 													[local::
-													at0060,    -- Visual field index
-													at0061,    -- Visual field loss due to diffuse defect
-													at0062,    -- Visual field loss due to local defect
-													at0063,    -- Glaucoma Hemifield Test Analysis (GHT)
-													at0064;    -- Optical fixation measurements
-													at0063]
+													at0060, 	-- Visual field index
+													at0061, 	-- Visual field loss due to diffuse defect
+													at0062, 	-- Visual field loss due to local defect
+													at0063, 	-- Glaucoma Hemifield Test Analysis (GHT)
+													at0064] 	-- Optical fixation measurements
 												}
 											}
 										}
 									}
-									ELEMENT[at0005] occurrences matches {0..1} matches {    -- Clinical description
+									ELEMENT[at0005] occurrences matches {0..1} matches {	-- Clinical description
 										value matches {
 											DV_TEXT matches {*}
 										}
 									}
-									CLUSTER[at0007] occurrences matches {0..2} matches {    -- Test result
+									CLUSTER[at0007] occurrences matches {0..2} matches {	-- Test result
 										items cardinality matches {1..*; unordered} matches {
-											ELEMENT[at0008] occurrences matches {0..1} matches {    -- Eye examined
+											ELEMENT[at0008] occurrences matches {0..1} matches {	-- Eye examined
 												value matches {
 													DV_CODED_TEXT matches {
 														defining_code matches {
 															[local::
-															at0019,    -- Left eye
-															at0020]    -- Right eye
+															at0019, 	-- Left eye
+															at0020]	-- Right eye
 														}
 													}
 												}
 											}
-											ELEMENT[at0164] occurrences matches {0..1} matches {    -- Glaucoma Hemifield Test (GHT)
+											ELEMENT[at0164] occurrences matches {0..1} matches {	-- Glaucoma Hemifield Test (GHT)
 												value matches {
 													DV_CODED_TEXT matches {
 														defining_code matches {
 															[local::
-															at0165,    -- Outside normal limits
-															at0166,    -- Borderline
-															at0167,    -- General reduction of sensitivity
-															at0168,    -- Abnormally high sensitivity
-															at0169]    -- Within normal limits
+															at0165, 	-- Outside normal limits
+															at0166, 	-- Borderline
+															at0167, 	-- General reduction of sensitivity
+															at0168, 	-- Abnormally high sensitivity
+															at0169]	-- Within normal limits
 														}
 													}
 												}
 											}
-											ELEMENT[at0054] occurrences matches {0..1} matches {    -- Foveal sensitivity measured
+											ELEMENT[at0054] occurrences matches {0..1} matches {	-- Foveal sensitivity measured
 												value matches {
-													DV_BOOLEAN matches {*}
+													DV_BOOLEAN matches {
+														value matches {True, False}
+													}
 												}
 											}
-											ELEMENT[at0055] occurrences matches {0..1} matches {    -- Foveal sensitivity
+											ELEMENT[at0055] occurrences matches {0..1} matches {	-- Foveal sensitivity
 												value matches {
 													C_DV_QUANTITY <
 														property = <[openehr::123]>
@@ -141,16 +141,15 @@ definition
 													>
 												}
 											}
-											ELEMENT[at0037] occurrences matches {0..1} matches {    -- Visual Field Index (VFI)
+											ELEMENT[at0037] occurrences matches {0..1} matches {	-- Visual Field Index (VFI)
 												value matches {
 													DV_PROPORTION matches {
 														numerator matches {|0.0..100.0|}
-														is_integral matches {false}
 														type matches {2}
 													}
 												}
 											}
-											ELEMENT[at0034] occurrences matches {0..1} matches {    -- Mean Deviation (MD)
+											ELEMENT[at0034] occurrences matches {0..1} matches {	-- Mean Deviation (MD)
 												value matches {
 													C_DV_QUANTITY <
 														property = <[openehr::123]>
@@ -164,16 +163,15 @@ definition
 													>
 												}
 											}
-											ELEMENT[at0038] occurrences matches {0..1} matches {    -- Mean Deviation P (MD)
+											ELEMENT[at0038] occurrences matches {0..1} matches {	-- Mean Deviation P (MD)
 												value matches {
 													DV_PROPORTION matches {
 														numerator matches {|0.0..5.0|}
-														is_integral matches {false}
 														type matches {2}
 													}
 												}
 											}
-											ELEMENT[at0035] occurrences matches {0..1} matches {    -- Pattern Standard Deviation (PSD)
+											ELEMENT[at0035] occurrences matches {0..1} matches {	-- Pattern Standard Deviation (PSD)
 												value matches {
 													C_DV_QUANTITY <
 														property = <[openehr::123]>
@@ -187,16 +185,15 @@ definition
 													>
 												}
 											}
-											ELEMENT[at0039] occurrences matches {0..1} matches {    -- Pattern Standard Deviation P (PSD)
+											ELEMENT[at0039] occurrences matches {0..1} matches {	-- Pattern Standard Deviation P (PSD)
 												value matches {
 													DV_PROPORTION matches {
 														numerator matches {|0.0..5.0|}
-														is_integral matches {false}
 														type matches {2}
 													}
 												}
 											}
-											ELEMENT[at0058] occurrences matches {0..1} matches {    -- Short-Term Fluctuation (SF)
+											ELEMENT[at0058] occurrences matches {0..1} matches {	-- Short-Term Fluctuation (SF)
 												value matches {
 													C_DV_QUANTITY <
 														property = <[openehr::123]>
@@ -208,7 +205,7 @@ definition
 													>
 												}
 											}
-											ELEMENT[at0059] occurrences matches {0..1} matches {    -- Corrected Pattern Standard Deviation (CPSD)
+											ELEMENT[at0059] occurrences matches {0..1} matches {	-- Corrected Pattern Standard Deviation (CPSD)
 												value matches {
 													C_DV_QUANTITY <
 														property = <[openehr::123]>
@@ -221,58 +218,59 @@ definition
 													>
 												}
 											}
-											ELEMENT[at0027] occurrences matches {0..1} matches {    -- Perimetry test interpretation
+											ELEMENT[at0027] occurrences matches {0..1} matches {	-- Perimetry test interpretation
 												value matches {
 													DV_CODED_TEXT matches {
 														defining_code matches {
 															[local::
-															at0028,    -- Outside normal limits
-															at0029,    -- Borderline
-															at0031,    -- Abnormally high sensitivity
-															at0030,    -- General reduction of sensitivity
-															at0053,    -- Borderline and general reduction in sensitivity
-															at0032;    -- Within normal limits
-															at0032]
+															at0028, 	-- Outside normal limits
+															at0029, 	-- Borderline
+															at0031, 	-- Abnormally high sensitivity
+															at0030, 	-- General reduction of sensitivity
+															at0053, 	-- Borderline and general reduction in sensitivity
+															at0032] 	-- Within normal limits
 														}
 													}
 												}
 											}
-											ELEMENT[at0174] occurrences matches {0..1} matches {    -- No test result
+											ELEMENT[at0174] occurrences matches {0..1} matches {	-- No test result
 												value matches {
-													DV_BOOLEAN matches {*}
+													DV_BOOLEAN matches {
+														value matches {True, False}
+													}
 												}
 											}
-											ELEMENT[at0175] occurrences matches {0..1} matches {    -- Reason for no test result
+											ELEMENT[at0175] occurrences matches {0..1} matches {	-- Reason for no test result
 												value matches {
 													DV_TEXT matches {*}
 												}
 											}
-											allow_archetype CLUSTER[at0171] occurrences matches {0..*} matches {    -- Multimedia
+											allow_archetype CLUSTER[at0171] occurrences matches {0..*} matches {	-- Multimedia
 												include
 													archetype_id/value matches {/openEHR-EHR-CLUSTER\.multimedia(-[a-zA-Z0-9_]+)*\.v1/}
 											}
-											ELEMENT[at0009] occurrences matches {0..*} matches {    -- Clinical interpretation
+											ELEMENT[at0009] occurrences matches {0..*} matches {	-- Clinical interpretation
 												value matches {
 													DV_TEXT matches {*}
 												}
 											}
-											ELEMENT[at0173] occurrences matches {0..1} matches {    -- Comment
+											ELEMENT[at0173] occurrences matches {0..1} matches {	-- Comment
 												value matches {
 													DV_TEXT matches {*}
 												}
 											}
 										}
 									}
-									ELEMENT[at0025] occurrences matches {0..1} matches {    -- Overall interpretation
+									ELEMENT[at0025] occurrences matches {0..1} matches {	-- Overall interpretation
 										value matches {
 											DV_TEXT matches {*}
 										}
 									}
-									allow_archetype CLUSTER[at0172] occurrences matches {0..*} matches {    -- Test not done
+									allow_archetype CLUSTER[at0172] occurrences matches {0..*} matches {	-- Test not done
 										include
 											archetype_id/value matches {/openEHR-EHR-CLUSTER\.exclusion_exam(-[a-zA-Z0-9_]+)*\.v1/}
 									}
-									ELEMENT[at0024] occurrences matches {0..1} matches {    -- Comment
+									ELEMENT[at0024] occurrences matches {0..1} matches {	-- Comment
 										value matches {
 											DV_TEXT matches {*}
 										}
@@ -281,50 +279,48 @@ definition
 							}
 						}
 						state matches {
-							ITEM_TREE[at0022] matches {    -- Tree
+							ITEM_TREE[at0022] matches {	-- Tree
 								items cardinality matches {0..*; unordered} matches {
-									ELEMENT[at0048] occurrences matches {0..1} matches {    -- Fixation checked quantity
+									ELEMENT[at0048] occurrences matches {0..1} matches {	-- Fixation checked quantity
 										value matches {
 											DV_COUNT matches {
 												magnitude matches {|0..100|}
 											}
 										}
 									}
-									ELEMENT[at0049] occurrences matches {0..1} matches {    -- Patient not properly fixated quantity
+									ELEMENT[at0049] occurrences matches {0..1} matches {	-- Patient not properly fixated quantity
 										value matches {
 											DV_COUNT matches {
 												magnitude matches {|0..100|}
 											}
 										}
 									}
-									ELEMENT[at0056] occurrences matches {0..1} matches {    -- False positives estimate
+									ELEMENT[at0056] occurrences matches {0..1} matches {	-- False positives estimate
 										value matches {
 											DV_PROPORTION matches {
 												numerator matches {|0.0..100.0|}
-												is_integral matches {false}
 												type matches {2}
 											}
 										}
 									}
-									ELEMENT[at0057] occurrences matches {0..1} matches {    -- False negatives estimate
+									ELEMENT[at0057] occurrences matches {0..1} matches {	-- False negatives estimate
 										value matches {
 											DV_PROPORTION matches {
 												numerator matches {|0.0..100.0|}
-												is_integral matches {false}
 												type matches {2}
 											}
 										}
 									}
-									ELEMENT[at0023] occurrences matches {0..*} matches {    -- Confounding factors
+									ELEMENT[at0023] occurrences matches {0..*} matches {	-- Confounding factors
 										value matches {
 											DV_TEXT matches {*}
 										}
 									}
-									allow_archetype CLUSTER[at0036] occurrences matches {0..2} matches {    -- Refractive correction
+									allow_archetype CLUSTER[at0036] occurrences matches {0..2} matches {	-- Refractive correction
 										include
 											archetype_id/value matches {/openEHR-EHR-CLUSTER\.refraction_details(-[a-zA-Z0-9_]+)*\.v1/}
 									}
-									allow_archetype CLUSTER[at0042] occurrences matches {0..*} matches {    -- Examination findings - pupils
+									allow_archetype CLUSTER[at0042] occurrences matches {0..*} matches {	-- Examination findings - pupils
 										include
 											archetype_id/value matches {/openEHR-EHR-CLUSTER\.exam_pupils(-[a-zA-Z0-9_]+)*\.v1/}
 									}
@@ -336,15 +332,13 @@ definition
 			}
 		}
 		protocol matches {
-			ITEM_TREE[at0010] matches {    -- Tree
+			ITEM_TREE[at0010] matches {	-- Tree
 				items cardinality matches {0..*; unordered} matches {
-					allow_archetype CLUSTER[at0026] occurrences matches {0..1} matches {    -- Device details
+					allow_archetype CLUSTER[at0026] occurrences matches {0..1} matches {	-- Device details
 						include
 							archetype_id/value matches {/openEHR-EHR-CLUSTER\.device(-[a-zA-Z0-9_]+)*\.v1/}
-						exclude
-							archetype_id/value matches {/.*/}
 					}
-					allow_archetype CLUSTER[at0170] occurrences matches {0..*} matches {    -- Acquisition details
+					allow_archetype CLUSTER[at0170] occurrences matches {0..*} matches {	-- Acquisition details
 						include
 							archetype_id/value matches {/openEHR-EHR-CLUSTER\.acquisition_details_on_visual_field_test(-[a-zA-Z0-9_]+)*\.v0/}
 					}
@@ -352,6 +346,9 @@ definition
 			}
 		}
 	}
+
+
+
 
 ontology
 	terminologies_available = <"SNOMED-CT", ...>
@@ -601,7 +598,7 @@ ontology
 			>
 		>
 	>
-	term_binding = <
+	term_bindings = <
 		["SNOMED-CT"] = <
 			items = <
 				["at0027"] = <[SNOMED-CT::423083007]>
